@@ -52,8 +52,9 @@ export function AppSidebar() {
                           variant="ghost"
                           className="group w-full justify-start "
                         >
-                          <ChevronRight className="group-data-panel-open/button:rotate-90" />
+                          <MessageCircle />
                           Chat
+                          <ChevronRight className="group-data-panel-open/button:rotate-90" />
                         </Button>
                       }
                     />

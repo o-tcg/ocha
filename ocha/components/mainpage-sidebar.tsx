@@ -237,6 +237,71 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                render={
+                  <SidebarMenuButton
+                    size="lg"
+                    className="group data-popup-open:bg-sidebar-accent data-popup-open:text-sidebar-accent-foreground"
+                  >
+                    <Avatar className="h-8 w-8 rounded-lg">
+                      <AvatarImage src="https://github.com/godkama.png" />
+                    </Avatar>
+
+                    <div className="grid flex-1 text-left text-sm leading-tight">
+                      <span className="truncate font-medium">kama</span>
+                      <span className="truncate text-xs text-muted-foreground">
+                        kama@example.com
+                      </span>
+                    </div>
+
+                    <ChevronsUp className="ml-auto size-4" />
+                  </SidebarMenuButton>
+                }
+              />
+
+              <DropdownMenuContent
+                side="top"
+                align="end"
+                sideOffset={4}
+                className="min-w-56 rounded-lg"
+              >
+                <DropdownMenuItem>
+                  <VerifiedIcon />
+                  Verify
+                </DropdownMenuItem>
+
+                <DropdownMenuSeparator />
+
+                <DropdownMenuItem>
+                  <User />
+                  Profile
+                </DropdownMenuItem>
+
+                <DropdownMenuItem>
+                  <Settings />
+                  Settings
+                </DropdownMenuItem>
+
+                <DropdownMenuItem>
+                  <Bell />
+                  Notifications
+                </DropdownMenuItem>
+
+                <DropdownMenuSeparator />
+
+                <DropdownMenuItem variant="destructive">
+                  <LogOut />
+                  Log out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
   );
 }

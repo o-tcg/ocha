@@ -13,7 +13,7 @@ import {
   SidebarFooter,
 } from "@/components/ui/sidebar";
 import { Menu } from "@base-ui/react";
-import { GalleryVerticalEnd } from "lucide-react";
+import { GalleryVerticalEnd, VerifiedIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   ChevronRight,
@@ -38,7 +38,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { BadgeCheck, Bell, CreditCard, LogOut, Sparkles } from "lucide-react";
+import {
+  BadgeCheck,
+  Bell,
+  CreditCard,
+  User,
+  LogOut,
+  Sparkles,
+  Settings,
+} from "lucide-react";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -96,62 +104,133 @@ export function AppSidebar() {
                         </Button>
                       }
                     />
-                    <CollapsibleContent className="mt-1 ml-5 style-lyra:ml-4">
-                      <SidebarMenuButton>
-                        <Skeleton className="size-8 shrink-0 rounded-full" />
-                        <Skeleton className="h-4 w-37.5" />
-                      </SidebarMenuButton>
-                      <SidebarMenuButton>
-                        <Skeleton className="size-8 shrink-0 rounded-full" />
-                        <Skeleton className="h-4 w-37.5" />
-                      </SidebarMenuButton>
-                      <SidebarMenuButton>
-                        <Skeleton className="size-8 shrink-0 rounded-full" />
-                        <Skeleton className="h-4 w-37.5" />
-                      </SidebarMenuButton>
-                      <SidebarMenuButton>
-                        <Skeleton className="size-8 shrink-0 rounded-full" />
-                        <Skeleton className="h-4 w-37.5" />
-                      </SidebarMenuButton>
-                      <SidebarMenuButton>
-                        <Skeleton className="size-8 shrink-0 rounded-full" />
-                        <Skeleton className="h-4 w-37.5" />
-                      </SidebarMenuButton>
-                      <SidebarMenuButton>
-                        <Skeleton className="size-8 shrink-0 rounded-full" />
-                        <Skeleton className="h-4 w-37.5" />
-                      </SidebarMenuButton>
-                      <SidebarMenuButton>
-                        <Skeleton className="size-8 shrink-0 rounded-full" />
-                        <Skeleton className="h-4 w-37.5" />
-                      </SidebarMenuButton>
-                      <SidebarMenuButton>
-                        <Skeleton className="size-8 shrink-0 rounded-full" />
-                        <Skeleton className="h-4 w-37.5" />
-                      </SidebarMenuButton>
-                      <SidebarMenuButton>
-                        <Skeleton className="size-8 shrink-0 rounded-full" />
-                        <Skeleton className="h-4 w-37.5" />
-                      </SidebarMenuButton>
-                      <SidebarMenuButton>
-                        <Skeleton className="size-8 shrink-0 rounded-full" />
-                        <Skeleton className="h-4 w-37.5" />
-                      </SidebarMenuButton>
-                      <SidebarMenuButton>
-                        <Skeleton className="size-8 shrink-0 rounded-full" />
-                        <Skeleton className="h-4 w-37.5" />
-                      </SidebarMenuButton>
-                      <SidebarMenuButton>
-                        <Skeleton className="size-8 shrink-0 rounded-full" />
-                        <Skeleton className="h-4 w-37.5" />
-                      </SidebarMenuButton>
+                    <CollapsibleContent className="mt-3">
+                      <div className="flex flex-col gap-3">
+                        <SidebarMenuButton>
+                          <Skeleton className="size-8 shrink-0 rounded-full" />
+                          <Skeleton className="h-4 flex-1" />
+                        </SidebarMenuButton>
+
+                        <SidebarMenuButton>
+                          <Skeleton className="size-8 shrink-0 rounded-full" />
+                          <Skeleton className="h-4 flex-1" />
+                        </SidebarMenuButton>
+
+                        <SidebarMenuButton>
+                          <Skeleton className="size-8 shrink-0 rounded-full" />
+                          <Skeleton className="h-4 flex-1" />
+                        </SidebarMenuButton>
+
+                        <SidebarMenuButton>
+                          <Skeleton className="size-8 shrink-0 rounded-full" />
+                          <Skeleton className="h-4 flex-1" />
+                        </SidebarMenuButton>
+
+                        <SidebarMenuButton>
+                          <Skeleton className="size-8 shrink-0 rounded-full" />
+                          <Skeleton className="h-4 flex-1" />
+                        </SidebarMenuButton>
+
+                        <SidebarMenuButton>
+                          <Skeleton className="size-8 shrink-0 rounded-full" />
+                          <Skeleton className="h-4 flex-1" />
+                        </SidebarMenuButton>
+
+                        <SidebarMenuButton>
+                          <Skeleton className="size-8 shrink-0 rounded-full" />
+                          <Skeleton className="h-4 flex-1" />
+                        </SidebarMenuButton>
+
+                        <SidebarMenuButton>
+                          <Skeleton className="size-8 shrink-0 rounded-full" />
+                          <Skeleton className="h-4 flex-1" />
+                        </SidebarMenuButton>
+
+                        <SidebarMenuButton>
+                          <Skeleton className="size-8 shrink-0 rounded-full" />
+                          <Skeleton className="h-4 flex-1" />
+                        </SidebarMenuButton>
+
+                        <SidebarMenuButton>
+                          <Skeleton className="size-8 shrink-0 rounded-full" />
+                          <Skeleton className="h-4 flex-1" />
+                        </SidebarMenuButton>
+
+                        <SidebarMenuButton>
+                          <Skeleton className="size-8 shrink-0 rounded-full" />
+                          <Skeleton className="h-4 flex-1" />
+                        </SidebarMenuButton>
+
+                        <SidebarMenuButton>
+                          <Skeleton className="size-8 shrink-0 rounded-full" />
+                          <Skeleton className="h-4 flex-1" />
+                        </SidebarMenuButton>
+
+                        <SidebarMenuButton>
+                          <Skeleton className="size-8 shrink-0 rounded-full" />
+                          <Skeleton className="h-4 flex-1" />
+                        </SidebarMenuButton>
+
+                        <SidebarMenuButton>
+                          <Skeleton className="size-8 shrink-0 rounded-full" />
+                          <Skeleton className="h-4 flex-1" />
+                        </SidebarMenuButton>
+                      </div>
                     </CollapsibleContent>
                   </Collapsible>
                 ) : (
-                  <SidebarMenuButton tooltip="Chat">
-                    <MessageCircle />
-                    <span>Chat</span>
-                  </SidebarMenuButton>
+                  <Collapsible>
+                    <CollapsibleTrigger
+                      render={
+                        <Button variant="ghost" className="group w-full">
+                          <MessageCircle />
+                        </Button>
+                      }
+                    />
+                    <CollapsibleContent className="mt-3">
+                      <div className="flex flex-col gap-3">
+                        <SidebarMenuButton className="justify-center">
+                          <Skeleton className="size-7 shrink-0 rounded-full" />
+                        </SidebarMenuButton>
+                        <SidebarMenuButton className="justify-center">
+                          <Skeleton className="size-7 shrink-0 rounded-full" />
+                        </SidebarMenuButton>
+                        <SidebarMenuButton className="justify-center">
+                          <Skeleton className="size-7 shrink-0 rounded-full" />
+                        </SidebarMenuButton>
+                        <SidebarMenuButton className="justify-center">
+                          <Skeleton className="size-7 shrink-0 rounded-full" />
+                        </SidebarMenuButton>
+                        <SidebarMenuButton className="justify-center">
+                          <Skeleton className="size-7 shrink-0 rounded-full" />
+                        </SidebarMenuButton>
+                        <SidebarMenuButton className="justify-center">
+                          <Skeleton className="size-7 shrink-0 rounded-full" />
+                        </SidebarMenuButton>
+                        <SidebarMenuButton className="justify-center">
+                          <Skeleton className="size-7 shrink-0 rounded-full" />
+                        </SidebarMenuButton>
+                        <SidebarMenuButton className="justify-center">
+                          <Skeleton className="size-7 shrink-0 rounded-full" />
+                        </SidebarMenuButton>
+                        <SidebarMenuButton className="justify-center">
+                          <Skeleton className="size-7 shrink-0 rounded-full" />
+                        </SidebarMenuButton>
+                        <SidebarMenuButton className="justify-center">
+                          <Skeleton className="size-7 shrink-0 rounded-full" />
+                        </SidebarMenuButton>
+                        <SidebarMenuButton className="justify-center">
+                          <Skeleton className="size-7 shrink-0 rounded-full" />
+                        </SidebarMenuButton>
+                        <SidebarMenuButton className="justify-center">
+                          <Skeleton className="size-7 shrink-0 rounded-full" />
+                        </SidebarMenuButton>
+                        <SidebarMenuButton className="justify-center">
+                          <Skeleton className="size-7 shrink-0 rounded-full" />
+                        </SidebarMenuButton>
+                      </div>
+                    </CollapsibleContent>
+                  </Collapsible>
                 )}
               </SidebarMenuItem>
             </SidebarMenu>

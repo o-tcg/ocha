@@ -16,7 +16,7 @@ export default function Page() {
 
       <div className="mt-10 flex flex-col items-center justify-center gap-6 text-center">
         <h1 className="text-5xl font-extrabold tracking-tight md:text-7xl">
-          The Next Big osu! Game
+          The Next Big osu! Application
         </h1>
         <p className="max-w-150 text-lg text-muted-foreground">
           Chat, add friends, express your opinion and stay in touch with the

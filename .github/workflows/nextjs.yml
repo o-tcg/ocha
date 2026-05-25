@@ -76,7 +76,6 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
       - name: Add nojekyll file
-        working-directory: ocha
         run: touch ./out/.nojekyll
 
       - name: Upload artifact

@@ -73,7 +73,11 @@ jobs:
 
       - name: Build with Next.js
         working-directory: ocha
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build && touch ./out/.nojekyll
+        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+
+      - name: Add nojekyll file
+        working-directory: ocha
+        run: touch ./out/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

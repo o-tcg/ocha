@@ -20,11 +20,49 @@ import {
   UserRoundPlus,
   Share,
   Star,
+  User,
+  Users,
+  UserRoundMinus,
 } from "lucide-react";
+import { useState } from "react";
 
 export default function Page() {
   const posts = Array.from({ length: 5 });
-
+  const [friendState, setFriendState] = useState("none");
+  const availStates = ["none", "friend", "mutual", "remove"];
+  function renderState(state: string) {
+    if (state == "none") {
+      return "Friend";
+    } else if (state == "friend") {
+      return "Friended";
+    } else if (state == "remove") {
+      return "Remove";
+    } else {
+      return "Mutuals";
+    }
+  }
+  function renderButtonState(state: string) {
+    if (state == "none") {
+      return "outline";
+    } else if (state == "friend") {
+      return "secondary";
+    } else if (state == "remove") {
+      return "destructive";
+    } else {
+      return "default";
+    }
+  }
+  function renderIconState(state: string) {
+    if (state == "none") {
+      return <UserRoundPlus />;
+    } else if (state == "friend") {
+      return <User />;
+    } else if (state == "remove") {
+      return <UserRoundMinus />;
+    } else {
+      return <Users />;
+    }
+  }
   return (
     <div className="ml-25 flex flex-col gap-4">
       {posts.map((_, i) => (
@@ -36,18 +74,23 @@ export default function Page() {
                 <Skeleton className="h-4 w-30" />
               </div>
               <div className="ml-auto">
-                <Tooltip>
-                  <TooltipTrigger
-                    render={
-                      <Button variant="outline">
-                        <UserRoundPlus /> Friend
-                      </Button>
+                <Button
+                  variant={renderButtonState(friendState)}
+                  onClick={() => {
+                    if (friendState === "none") {
+                      setFriendState("friend");
+                    } else if (friendState === "friend") {
+                      setFriendState("mutual");
+                    } else if (friendState === "mutual") {
+                      setFriendState("remove");
+                    } else {
+                      setFriendState("none");
                     }
-                  />
-                  <TooltipContent>
-                    <p>Friend</p>
-                  </TooltipContent>
-                </Tooltip>
+                  }}
+                >
+                  {renderIconState(friendState)}
+                  {renderState(friendState)}
+                </Button>
               </div>
             </div>
           </CardHeader>

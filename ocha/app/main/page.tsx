@@ -102,7 +102,10 @@ export default function Page() {
             <Tooltip>
               <TooltipTrigger
                 render={
-                  <Button variant="outline">
+                  <Button
+                    className=" hover:border-red-500 "
+                    variant="secondary"
+                  >
                     <Share />
                   </Button>
                 }
@@ -114,7 +117,10 @@ export default function Page() {
             <Tooltip>
               <TooltipTrigger
                 render={
-                  <Button variant="outline">
+                  <Button
+                    className=" hover:border-red-500 "
+                    variant="secondary"
+                  >
                     <Forward />
                   </Button>
                 }
@@ -126,7 +132,10 @@ export default function Page() {
             <Tooltip>
               <TooltipTrigger
                 render={
-                  <Button variant="outline" className="ml-auto">
+                  <Button
+                    variant="outline"
+                    className="hover:border-yellow-400 ml-auto"
+                  >
                     <Star />
                   </Button>
                 }
@@ -138,7 +147,10 @@ export default function Page() {
             <Tooltip>
               <TooltipTrigger
                 render={
-                  <Button variant="outline">
+                  <Button
+                    className=" hover:border-green-500 "
+                    variant="outline"
+                  >
                     <LineSquiggle />
                   </Button>
                 }
@@ -150,7 +162,7 @@ export default function Page() {
             <Tooltip>
               <TooltipTrigger
                 render={
-                  <Button variant="outline">
+                  <Button className=" hover:border-red-500 " variant="outline">
                     <Pin />
                   </Button>
                 }

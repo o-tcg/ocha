@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build && touch ./out/.nojekyll",
     "start": "next start",
-    "lint": "eslint",
-    "build:gh-pages": "cross-env BASE_PATH=/prod pnpm build"
+    "lint": "eslint"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",

@@ -49,8 +49,31 @@ import {
 } from "lucide-react";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Separator } from "@/components/ui/separator";
+const generateFriends = (length: number) => {
+  const sampleNames = [
+    "Alex Johnson",
+    "Sam Rivera",
+    "Taylor Swift",
+    "Jordan Lee",
+    "Morgan Vance",
+    "Casey Neistat",
+    "Riley Reid",
+    "Avery Davis",
+    "Quinn Fabray",
+    "Dakota Kai",
+  ];
 
+  return Array.from({ length }, (_, index) => ({
+    id: index + 1,
+    name: sampleNames[index % sampleNames.length] + ` #${index + 1}`,
+    // pravatar.cc generates stable dynamic random avatars based on img ID
+    avatar: `https://i.pravatar.cc/150?img=${(index % 70) + 1}`,
+    email: `user${index + 1}@example.com`,
+  }));
+};
 export function AppSidebar() {
+  const friends = generateFriends(50);
   const { open } = useSidebar();
   return (
     <Sidebar variant="floating" collapsible="icon">
@@ -75,7 +98,7 @@ export function AppSidebar() {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="relative flex-1 overflow-y-auto">
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -106,75 +129,14 @@ export function AppSidebar() {
                     />
                     <CollapsibleContent className="mt-3">
                       <div className="flex flex-col gap-3">
-                        <SidebarMenuButton>
-                          <Skeleton className="size-8 shrink-0 rounded-full" />
-                          <Skeleton className="h-4 flex-1" />
-                        </SidebarMenuButton>
-
-                        <SidebarMenuButton>
-                          <Skeleton className="size-8 shrink-0 rounded-full" />
-                          <Skeleton className="h-4 flex-1" />
-                        </SidebarMenuButton>
-
-                        <SidebarMenuButton>
-                          <Skeleton className="size-8 shrink-0 rounded-full" />
-                          <Skeleton className="h-4 flex-1" />
-                        </SidebarMenuButton>
-
-                        <SidebarMenuButton>
-                          <Skeleton className="size-8 shrink-0 rounded-full" />
-                          <Skeleton className="h-4 flex-1" />
-                        </SidebarMenuButton>
-
-                        <SidebarMenuButton>
-                          <Skeleton className="size-8 shrink-0 rounded-full" />
-                          <Skeleton className="h-4 flex-1" />
-                        </SidebarMenuButton>
-
-                        <SidebarMenuButton>
-                          <Skeleton className="size-8 shrink-0 rounded-full" />
-                          <Skeleton className="h-4 flex-1" />
-                        </SidebarMenuButton>
-
-                        <SidebarMenuButton>
-                          <Skeleton className="size-8 shrink-0 rounded-full" />
-                          <Skeleton className="h-4 flex-1" />
-                        </SidebarMenuButton>
-
-                        <SidebarMenuButton>
-                          <Skeleton className="size-8 shrink-0 rounded-full" />
-                          <Skeleton className="h-4 flex-1" />
-                        </SidebarMenuButton>
-
-                        <SidebarMenuButton>
-                          <Skeleton className="size-8 shrink-0 rounded-full" />
-                          <Skeleton className="h-4 flex-1" />
-                        </SidebarMenuButton>
-
-                        <SidebarMenuButton>
-                          <Skeleton className="size-8 shrink-0 rounded-full" />
-                          <Skeleton className="h-4 flex-1" />
-                        </SidebarMenuButton>
-
-                        <SidebarMenuButton>
-                          <Skeleton className="size-8 shrink-0 rounded-full" />
-                          <Skeleton className="h-4 flex-1" />
-                        </SidebarMenuButton>
-
-                        <SidebarMenuButton>
-                          <Skeleton className="size-8 shrink-0 rounded-full" />
-                          <Skeleton className="h-4 flex-1" />
-                        </SidebarMenuButton>
-
-                        <SidebarMenuButton>
-                          <Skeleton className="size-8 shrink-0 rounded-full" />
-                          <Skeleton className="h-4 flex-1" />
-                        </SidebarMenuButton>
-
-                        <SidebarMenuButton>
-                          <Skeleton className="size-8 shrink-0 rounded-full" />
-                          <Skeleton className="h-4 flex-1" />
-                        </SidebarMenuButton>
+                        {friends.map((friend) => (
+                          <SidebarMenuButton key={friend.id}>
+                            <Avatar>
+                              <AvatarImage src={friend.avatar} />
+                            </Avatar>
+                            {friend.name}
+                          </SidebarMenuButton>
+                        ))}
                       </div>
                     </CollapsibleContent>
                   </Collapsible>
@@ -189,45 +151,16 @@ export function AppSidebar() {
                     />
                     <CollapsibleContent className="mt-3">
                       <div className="flex flex-col gap-3">
-                        <SidebarMenuButton className="justify-center">
-                          <Skeleton className="size-7 shrink-0 rounded-full" />
-                        </SidebarMenuButton>
-                        <SidebarMenuButton className="justify-center">
-                          <Skeleton className="size-7 shrink-0 rounded-full" />
-                        </SidebarMenuButton>
-                        <SidebarMenuButton className="justify-center">
-                          <Skeleton className="size-7 shrink-0 rounded-full" />
-                        </SidebarMenuButton>
-                        <SidebarMenuButton className="justify-center">
-                          <Skeleton className="size-7 shrink-0 rounded-full" />
-                        </SidebarMenuButton>
-                        <SidebarMenuButton className="justify-center">
-                          <Skeleton className="size-7 shrink-0 rounded-full" />
-                        </SidebarMenuButton>
-                        <SidebarMenuButton className="justify-center">
-                          <Skeleton className="size-7 shrink-0 rounded-full" />
-                        </SidebarMenuButton>
-                        <SidebarMenuButton className="justify-center">
-                          <Skeleton className="size-7 shrink-0 rounded-full" />
-                        </SidebarMenuButton>
-                        <SidebarMenuButton className="justify-center">
-                          <Skeleton className="size-7 shrink-0 rounded-full" />
-                        </SidebarMenuButton>
-                        <SidebarMenuButton className="justify-center">
-                          <Skeleton className="size-7 shrink-0 rounded-full" />
-                        </SidebarMenuButton>
-                        <SidebarMenuButton className="justify-center">
-                          <Skeleton className="size-7 shrink-0 rounded-full" />
-                        </SidebarMenuButton>
-                        <SidebarMenuButton className="justify-center">
-                          <Skeleton className="size-7 shrink-0 rounded-full" />
-                        </SidebarMenuButton>
-                        <SidebarMenuButton className="justify-center">
-                          <Skeleton className="size-7 shrink-0 rounded-full" />
-                        </SidebarMenuButton>
-                        <SidebarMenuButton className="justify-center">
-                          <Skeleton className="size-7 shrink-0 rounded-full" />
-                        </SidebarMenuButton>
+                        {friends.map((friend) => (
+                          <SidebarMenuButton
+                            className="justify-center"
+                            key={friend.id}
+                          >
+                            <Avatar>
+                              <AvatarImage src={friend.avatar} />
+                            </Avatar>
+                          </SidebarMenuButton>
+                        ))}
                       </div>
                     </CollapsibleContent>
                   </Collapsible>
@@ -237,6 +170,8 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <div className="pointer-events-none sticky bottom-0 left-0 right-0 h-12 -mt-12 bg-gradient-to-t from-sidebar to-transparent z-10" />
+      <Separator />
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>

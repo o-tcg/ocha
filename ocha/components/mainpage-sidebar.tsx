@@ -269,34 +269,37 @@ export function AppSidebar() {
                 sideOffset={4}
                 className="min-w-56 rounded-lg"
               >
-                <DropdownMenuItem>
-                  <VerifiedIcon />
-                  Verify
-                </DropdownMenuItem>
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <VerifiedIcon />
+                    Verify
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <User />
+                    Profile
+                  </DropdownMenuItem>
 
+                  <DropdownMenuItem>
+                    <Settings />
+                    Settings
+                  </DropdownMenuItem>
+
+                  <DropdownMenuItem>
+                    <Bell />
+                    Notifications
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
                 <DropdownMenuSeparator />
 
-                <DropdownMenuItem>
-                  <User />
-                  Profile
-                </DropdownMenuItem>
-
-                <DropdownMenuItem>
-                  <Settings />
-                  Settings
-                </DropdownMenuItem>
-
-                <DropdownMenuItem>
-                  <Bell />
-                  Notifications
-                </DropdownMenuItem>
-
-                <DropdownMenuSeparator />
-
-                <DropdownMenuItem variant="destructive">
-                  <LogOut />
-                  Log out
-                </DropdownMenuItem>
+                <DropdownMenuGroup>
+                  <DropdownMenuItem variant="destructive">
+                    <LogOut />
+                    Log out
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
               </DropdownMenuContent>
             </DropdownMenu>
           </SidebarMenuItem>

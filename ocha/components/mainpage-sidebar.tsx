@@ -170,6 +170,7 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <Separator />
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>

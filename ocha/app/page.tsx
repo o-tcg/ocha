@@ -24,7 +24,7 @@ export default function Page() {
         </p>
 
         <Button size="lg" className="rounded-xl bg-[#ff66aa] ...">
-          <a href="temp">Connect with osu!</a>
+          <a href="main">Connect with osu!</a>
         </Button>
       </div>
     </div>

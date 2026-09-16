@@ -98,7 +98,7 @@ export function AppSidebar() {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="relative flex-1 overflow-y-auto">
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -170,6 +170,7 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <div className="pointer-events-none sticky bottom-0 left-0 right-0 h-12 -mt-12 bg-gradient-to-t from-sidebar to-transparent z-10" />
       <Separator />
       <SidebarFooter>
         <SidebarMenu>

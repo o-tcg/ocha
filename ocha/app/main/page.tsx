@@ -64,7 +64,7 @@ export default function Page() {
     }
   }
   return (
-    <div className="ml-25 flex flex-col gap-4">
+    <div className="mx-auto max-w-2xl items-center w-full flex flex-col gap-4">
       {posts.map((_, i) => (
         <Card key={i} className="w-full max-w-150">
           <CardHeader>
@@ -174,7 +174,7 @@ export default function Page() {
           </CardFooter>
         </Card>
       ))}
-      <div className="py-8 ml-60 text-sm text-muted-foreground">
+      <div className="py-8 text-sm text-center text-muted-foreground">
         No more posts to view
       </div>
     </div>

@@ -8,6 +8,17 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogCancel,
+  AlertDialogAction,
+  AlertDialogFooter,
+  AlertDialogHeader,
+} from "@/components/ui/alert-dialog";
+import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
@@ -302,21 +313,41 @@ export default function Page() {
               )}
             </CardContent>
             <CardFooter className="flex items-center gap-2">
-              <Tooltip>
-                <TooltipTrigger
-                  render={
-                    <Button
-                      className=" hover:border-red-500 "
-                      variant="secondary"
-                    >
-                      <Share />
-                    </Button>
-                  }
-                />
-                <TooltipContent>
-                  <p>Share</p>
-                </TooltipContent>
-              </Tooltip>
+              <AlertDialog>
+                <Tooltip>
+                  <TooltipTrigger
+                    render={
+                      <AlertDialogTrigger
+                        render={
+                          <Button
+                            className="hover:border-red-500"
+                            variant="secondary"
+                          >
+                            <Share />
+                          </Button>
+                        }
+                      />
+                    }
+                  />
+                  <TooltipContent>
+                    <p>Share</p>
+                  </TooltipContent>
+                </Tooltip>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Share this post</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      Click this button to copy the link
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction>Copy link</AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+
               <Tooltip>
                 <TooltipTrigger
                   render={

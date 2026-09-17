@@ -13,6 +13,7 @@ import {
   SidebarFooter,
 } from "@/components/ui/sidebar";
 import { Menu } from "@base-ui/react";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { GalleryVerticalEnd, VerifiedIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -170,7 +171,7 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <div className="pointer-events-none sticky bottom-0 left-0 right-0 h-12 -mt-12 bg-gradient-to-t from-sidebar to-transparent z-10" />
+      <div className="pointer-events-none sticky bottom-0 left-0 right-0 h-12 -mt-12 bg-linear-to-t from-sidebar to-transparent z-10" />
       <Separator />
       <SidebarFooter>
         <SidebarMenu>

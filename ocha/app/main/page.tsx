@@ -170,7 +170,46 @@ export default function Page() {
       }),
     );
   }
-
+  function handleToggleLike(postId: number) {
+    setPosts((prevPosts) =>
+      prevPosts.map((post) => {
+        if (post.id !== postId) return post;
+        const nextLiked = !post.isLiked;
+        return {
+          ...post,
+          isLiked: nextLiked,
+          likesCount: nextLiked ? post.likesCount + 1 : post.likesCount - 1,
+        };
+      }),
+    );
+  }
+  function handleToggleRepost(postId: number) {
+    setPosts((prevPosts) =>
+      prevPosts.map((post) => {
+        if (post.id !== postId) return post;
+        const nextRepost = !post.isReposted;
+        return {
+          ...post,
+          isReposted: nextRepost,
+          repostsCount: nextRepost
+            ? post.repostsCount + 1
+            : post.repostsCount - 1,
+        };
+      }),
+    );
+  }
+  function handleToggleSave(postId: number) {
+    setPosts((prevPosts) =>
+      prevPosts.map((post) => {
+        if (post.id !== postId) return post;
+        const nextSaved = !post.isSaved;
+        return {
+          ...post,
+          isSaved: nextSaved,
+        };
+      }),
+    );
+  }
   // function renderState(state: string) {
   //   if (state == "none") {
   //     return "Friend";
@@ -297,10 +336,20 @@ export default function Page() {
                 <TooltipTrigger
                   render={
                     <Button
-                      variant="outline"
-                      className="hover:border-yellow-400 ml-auto"
+                      variant={post.isLiked ? "default" : "outline"}
+                      className={`ml-auto transition-colors ${
+                        post.isLiked
+                          ? "border-yellow-400 bg-yellow-500/10 text-yellow-500 hover:bg-yellow-500/20"
+                          : "hover:border-yellow-400"
+                      }`}
+                      onClick={() => handleToggleLike(post.id)}
                     >
-                      <Star />
+                      <Star
+                        className={
+                          post.isLiked ? "fill-yellow-400 text-yellow-400" : ""
+                        }
+                      />{" "}
+                      {post.likesCount}
                     </Button>
                   }
                 />
@@ -312,10 +361,15 @@ export default function Page() {
                 <TooltipTrigger
                   render={
                     <Button
-                      className=" hover:border-green-500 "
-                      variant="outline"
+                      variant={post.isReposted ? "default" : "outline"}
+                      className={`transition-colors ${
+                        post.isReposted
+                          ? "border-green-500 bg-green-500/10 text-green-500 hover:bg-green-500/20"
+                          : "hover:border-green-500"
+                      }`}
+                      onClick={() => handleToggleRepost(post.id)}
                     >
-                      <LineSquiggle />
+                      <LineSquiggle /> {post.repostsCount}
                     </Button>
                   }
                 />
@@ -327,10 +381,19 @@ export default function Page() {
                 <TooltipTrigger
                   render={
                     <Button
-                      className=" hover:border-red-500 "
-                      variant="outline"
+                      onClick={() => handleToggleSave(post.id)}
+                      className={`transition-colors ${
+                        post.isSaved
+                          ? "border-red-500 bg-red-500/10 text-red-500 hover:bg-red-500/20"
+                          : "hover:border-red-500"
+                      }`}
+                      variant={post.isSaved ? "default" : "outline"}
                     >
-                      <Pin />
+                      <Pin
+                        className={
+                          post.isSaved ? "fill-red-500 text-red-500" : ""
+                        }
+                      />
                     </Button>
                   }
                 />

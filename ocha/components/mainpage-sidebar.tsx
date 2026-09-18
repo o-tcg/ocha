@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useState } from "react";
 import {
   Bell,
   ChevronRight,
@@ -24,6 +25,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarProvider,
   useSidebar,
 } from "@/components/ui/sidebar";
 import {
@@ -41,6 +43,15 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 const generateFriends = (length: number) => {
   const sampleNames = [
@@ -65,6 +76,7 @@ const generateFriends = (length: number) => {
 };
 
 export function AppSidebar() {
+  const [showDialog, setShowDialog] = useState(false);
   const friends = generateFriends(50);
   const { open } = useSidebar();
 
@@ -219,7 +231,10 @@ export function AppSidebar() {
                     Profile
                   </DropdownMenuItem>
 
-                  <DropdownMenuItem className="rounded-[14px]">
+                  <DropdownMenuItem
+                    className="rounded-[14px]"
+                    onClick={() => setShowDialog(true)}
+                  >
                     <Settings />
                     Settings
                   </DropdownMenuItem>
@@ -240,6 +255,10 @@ export function AppSidebar() {
                 </DropdownMenuGroup>
               </DropdownMenuContent>
             </DropdownMenu>
+
+            <Dialog open={showDialog} onOpenChange={setShowDialog}>
+              <DialogContent></DialogContent>
+            </Dialog>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>

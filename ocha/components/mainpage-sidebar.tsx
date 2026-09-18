@@ -115,7 +115,7 @@ export function AppSidebar() {
                   <Collapsible>
                     <CollapsibleTrigger
                       render={
-                        <SidebarMenuButton className="group">
+                        <SidebarMenuButton className="group/button">
                           <MessageCircle />
                           Chat
                           <ChevronRight className="group-data-panel-open/button:rotate-90" />

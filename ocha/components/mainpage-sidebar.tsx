@@ -52,6 +52,14 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 const generateFriends = (length: number) => {
   const sampleNames = [
@@ -257,7 +265,50 @@ export function AppSidebar() {
             </DropdownMenu>
 
             <Dialog open={showDialog} onOpenChange={setShowDialog}>
-              <DialogContent></DialogContent>
+              <DialogContent className="overflow-hidden p-0 md:h-125 md:max-w-175 lg:max-w-200 bg-background">
+                <DialogTitle className="sr-only">Settings</DialogTitle>
+                <DialogDescription className="sr-only">
+                  Customize Settings here.
+                </DialogDescription>
+
+                <SidebarProvider className="items-start min-h-full h-full">
+                  <Sidebar collapsible="none" className="hidden md:flex h-full">
+                    <SidebarContent>
+                      <SidebarGroup>
+                        <SidebarGroupContent>
+                          <SidebarMenu>
+                            <SidebarMenuItem>
+                              <SidebarMenuButton>Profile</SidebarMenuButton>
+                            </SidebarMenuItem>
+                          </SidebarMenu>
+                        </SidebarGroupContent>
+                      </SidebarGroup>
+                    </SidebarContent>
+                  </Sidebar>
+
+                  <main className="flex h-full flex-1 flex-col overflow-hidden bg-background">
+                    <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+                      <div className="flex items-center gap-2 px-4">
+                        <Breadcrumb>
+                          <BreadcrumbList>
+                            <BreadcrumbItem className="hidden md:block">
+                              <BreadcrumbLink href="#">Settings</BreadcrumbLink>
+                            </BreadcrumbItem>
+                            <BreadcrumbSeparator className="hidden md:block" />
+                            <BreadcrumbItem>
+                              <BreadcrumbPage>Profile</BreadcrumbPage>
+                            </BreadcrumbItem>
+                          </BreadcrumbList>
+                        </Breadcrumb>
+                      </div>
+                    </header>
+
+                    <div className="flex flex-1 flex-col gap-4 overflow-y-auto p-4 pt-0">
+                      {/* put any content over here, in a div? */}
+                    </div>
+                  </main>
+                </SidebarProvider>
+              </DialogContent>
             </Dialog>
           </SidebarMenuItem>
         </SidebarMenu>

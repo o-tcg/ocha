@@ -1,29 +1,31 @@
 "use client";
+
+import {
+  Bell,
+  ChevronRight,
+  ChevronsUp,
+  House,
+  LogOut,
+  MessageCircle,
+  Search,
+  Settings,
+  User,
+  VerifiedIcon,
+} from "lucide-react";
+
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarHeader,
   useSidebar,
-  SidebarFooter,
 } from "@/components/ui/sidebar";
-import { Menu } from "@base-ui/react";
-import { Dialog, DialogTrigger } from "@/components/ui/dialog";
-import { GalleryVerticalEnd, VerifiedIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  ChevronRight,
-  ChevronsUp,
-  MessageCircle,
-  Search,
-  House,
-  Circle,
-} from "lucide-react";
 import {
   Collapsible,
   CollapsibleContent,
@@ -34,23 +36,12 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
-import {
-  BadgeCheck,
-  Bell,
-  CreditCard,
-  User,
-  LogOut,
-  Sparkles,
-  Settings,
-} from "lucide-react";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Separator } from "@/components/ui/separator";
+
 const generateFriends = (length: number) => {
   const sampleNames = [
     "Alex Johnson",
@@ -68,18 +59,19 @@ const generateFriends = (length: number) => {
   return Array.from({ length }, (_, index) => ({
     id: index + 1,
     name: sampleNames[index % sampleNames.length] + ` #${index + 1}`,
-    // pravatar.cc generates stable dynamic random avatars based on img ID
     avatar: `https://i.pravatar.cc/150?img=${(index % 70) + 1}`,
     email: `user${index + 1}@example.com`,
   }));
 };
+
 export function AppSidebar() {
   const friends = generateFriends(50);
   const { open } = useSidebar();
+
   return (
     <Sidebar variant="floating" collapsible="icon">
       <SidebarHeader>
-        <SidebarMenu>
+        <SidebarMenu className="gap-2">
           <SidebarMenuItem>
             <SidebarMenuButton
               size="lg"
@@ -93,43 +85,46 @@ export function AppSidebar() {
                 <span className="truncate font-medium">o!cha</span>
                 <span className="truncate text-xs">Alpha Edition</span>
               </div>
-
-              <Circle className="ml-auto size-4" />
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
+
       <SidebarContent className="relative flex-1 overflow-y-auto">
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
+
           <SidebarGroupContent>
-            <SidebarMenu>
+            <SidebarMenu className="gap-2">
               <SidebarMenuItem>
                 <SidebarMenuButton>
-                  <House /> Home
+                  <House />
+                  Home
                 </SidebarMenuButton>
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
                 <SidebarMenuButton>
                   <Search />
                   Search
                 </SidebarMenuButton>
               </SidebarMenuItem>
+
               <SidebarMenuItem>
                 {open ? (
                   <Collapsible>
                     <CollapsibleTrigger
                       render={
-                        <Button
-                          variant="ghost"
-                          className="group w-full justify-start "
-                        >
+                        <SidebarMenuButton className="group">
                           <MessageCircle />
                           Chat
                           <ChevronRight className="group-data-panel-open/button:rotate-90" />
-                        </Button>
+                        </SidebarMenuButton>
                       }
                     />
-                    <CollapsibleContent className="mt-3">
-                      <div className="flex flex-col gap-3">
+
+                    <CollapsibleContent className="mt-2">
+                      <div className="flex flex-col gap-2">
                         {friends.map((friend) => (
                           <SidebarMenuButton key={friend.id}>
                             <Avatar>
@@ -145,13 +140,14 @@ export function AppSidebar() {
                   <Collapsible>
                     <CollapsibleTrigger
                       render={
-                        <Button variant="ghost" className="group w-full">
+                        <SidebarMenuButton className="group justify-center">
                           <MessageCircle />
-                        </Button>
+                        </SidebarMenuButton>
                       }
                     />
-                    <CollapsibleContent className="mt-3">
-                      <div className="flex flex-col gap-3">
+
+                    <CollapsibleContent className="mt-2">
+                      <div className="flex flex-col gap-2">
                         {friends.map((friend) => (
                           <SidebarMenuButton
                             className="justify-center"
@@ -171,8 +167,11 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <div className="pointer-events-none sticky bottom-0 left-0 right-0 h-12 -mt-12 bg-linear-to-t from-sidebar to-transparent z-10" />
+
+      <div className="pointer-events-none sticky bottom-0 left-0 right-0 z-10 -mt-12 h-12 bg-linear-to-t from-sidebar to-transparent" />
+
       <Separator />
+
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
@@ -203,35 +202,38 @@ export function AppSidebar() {
                 side="top"
                 align="end"
                 sideOffset={4}
-                className="min-w-56 rounded-lg"
+                className="min-w-56 rounded-[14px] bg-sidebar/95 backdrop-blur-sm"
               >
                 <DropdownMenuGroup>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem className="rounded-[14px]">
                     <VerifiedIcon />
                     Verify
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
+
                 <DropdownMenuSeparator />
+
                 <DropdownMenuGroup>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem className="rounded-[14px]">
                     <User />
                     Profile
                   </DropdownMenuItem>
 
-                  <DropdownMenuItem>
+                  <DropdownMenuItem className="rounded-[14px]">
                     <Settings />
                     Settings
                   </DropdownMenuItem>
 
-                  <DropdownMenuItem>
+                  <DropdownMenuItem className="rounded-[14px]">
                     <Bell />
                     Notifications
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
+
                 <DropdownMenuSeparator />
 
                 <DropdownMenuGroup>
-                  <DropdownMenuItem className="text-destructive focus:bg-destructive/10 focus:text-destructive dark:focus:bg-destructive/20 *:[svg]:text-destructive">
+                  <DropdownMenuItem className="rounded-[14px] text-destructive hover:bg-destructive/10 hover:text-destructive focus:bg-destructive/10 focus:text-destructive dark:hover:bg-destructive/20 dark:focus:bg-destructive/20 *:[svg]:text-destructive">
                     <LogOut />
                     Log out
                   </DropdownMenuItem>

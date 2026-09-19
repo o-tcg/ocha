@@ -1,15 +1,20 @@
 "use client";
 
+import React, { useState } from "react";
 import {
   Bell,
   ChevronRight,
   ChevronsUp,
+  Headset,
   House,
   LogOut,
   MessageCircle,
   Search,
   Settings,
+  Settings2,
+  SquarePen,
   User,
+  UserRound,
   VerifiedIcon,
 } from "lucide-react";
 
@@ -24,6 +29,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarProvider,
   useSidebar,
 } from "@/components/ui/sidebar";
 import {
@@ -41,6 +47,32 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import {
+  Field,
+  FieldLabel,
+  FieldContent,
+  FieldDescription,
+} from "@/components/ui/field";
+import { itemAxisPredicate } from "recharts/types/state/selectors/axisSelectors";
+import { ItemSeparator } from "./ui/item";
+import { Switch } from "./ui/switch";
 
 const generateFriends = (length: number) => {
   const sampleNames = [
@@ -63,11 +95,69 @@ const generateFriends = (length: number) => {
     email: `user${index + 1}@example.com`,
   }));
 };
+//temp settings, replace later
+const data = {
+  nav: [
+    {
+      name: "Profile",
+      icon: SquarePen,
+      content: (
+        <Field orientation="horizontal" className="max-w-sm">
+          <FieldContent>
+            <FieldLabel htmlFor="switch1">Show Display Name</FieldLabel>
+            <FieldDescription>
+              Show your display name to non-friends
+            </FieldDescription>
+          </FieldContent>
+          <Switch id="switch1" />
+        </Field>
+      ),
+    },
+    {
+      name: "Account",
+      icon: UserRound,
+      content: (
+        <Field orientation="horizontal" className="max-w-sm">
+          <FieldContent></FieldContent>
+        </Field>
+      ),
+    },
+    {
+      name: "Verify",
+      icon: VerifiedIcon,
+      content: (
+        <Field orientation="horizontal" className="max-w-sm">
+          <FieldContent></FieldContent>
+        </Field>
+      ),
+    },
+    {
+      name: "Your Data",
+      icon: Settings2,
+      content: (
+        <Field orientation="horizontal" className="max-w-sm">
+          <FieldContent></FieldContent>
+        </Field>
+      ),
+    },
+    {
+      name: "Support",
+      icon: Headset,
+      content: (
+        <Field orientation="horizontal" className="max-w-sm">
+          <FieldContent></FieldContent>
+        </Field>
+      ),
+    },
+  ],
+};
 
 export function AppSidebar() {
+  const [showDialog, setShowDialog] = useState(false);
   const friends = generateFriends(50);
   const { open } = useSidebar();
-
+  const [activeSetting, setActiveSetting] = useState("Profile");
+  const activeNavItem = data.nav.find((item) => item.name === activeSetting);
   return (
     <Sidebar variant="floating" collapsible="icon">
       <SidebarHeader>
@@ -219,7 +309,10 @@ export function AppSidebar() {
                     Profile
                   </DropdownMenuItem>
 
-                  <DropdownMenuItem className="rounded-[14px]">
+                  <DropdownMenuItem
+                    className="rounded-[14px]"
+                    onClick={() => setShowDialog(true)}
+                  >
                     <Settings />
                     Settings
                   </DropdownMenuItem>
@@ -240,6 +333,61 @@ export function AppSidebar() {
                 </DropdownMenuGroup>
               </DropdownMenuContent>
             </DropdownMenu>
+
+            <Dialog open={showDialog} onOpenChange={setShowDialog}>
+              <DialogContent className="overflow-hidden p-0 md:h-125 md:max-w-175 lg:max-w-200 bg-background">
+                <DialogTitle className="sr-only">Settings</DialogTitle>
+                <DialogDescription className="sr-only">
+                  Customize Settings here.
+                </DialogDescription>
+
+                <SidebarProvider className="items-start min-h-full h-full">
+                  <Sidebar collapsible="none" className="hidden md:flex h-full">
+                    <SidebarContent>
+                      <SidebarGroup>
+                        <SidebarGroupContent>
+                          <SidebarMenu>
+                            {data.nav.map((item) => (
+                              <SidebarMenuItem key={item.name}>
+                                <SidebarMenuButton
+                                  isActive={item.name === activeSetting}
+                                  onClick={() => setActiveSetting(item.name)}
+                                >
+                                  {item.name}
+                                </SidebarMenuButton>
+                              </SidebarMenuItem>
+                            ))}
+                          </SidebarMenu>
+                        </SidebarGroupContent>
+                      </SidebarGroup>
+                    </SidebarContent>
+                  </Sidebar>
+
+                  <main className="flex h-full flex-1 flex-col overflow-hidden bg-background">
+                    <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+                      <div className="flex items-center gap-2 px-4">
+                        <Breadcrumb>
+                          <BreadcrumbList>
+                            <BreadcrumbItem className="hidden md:block">
+                              <BreadcrumbLink href="#">Settings</BreadcrumbLink>
+                            </BreadcrumbItem>
+                            <BreadcrumbSeparator className="hidden md:block" />
+                            <BreadcrumbItem>
+                              <BreadcrumbPage>{activeSetting}</BreadcrumbPage>
+                            </BreadcrumbItem>
+                          </BreadcrumbList>
+                        </Breadcrumb>
+                      </div>
+                    </header>
+
+                    <div className="flex flex-1 flex-col gap-4 overflow-y-auto p-4 pt-0">
+                      {/* put any content over here, in a div? */}
+                      {activeNavItem?.content}
+                    </div>
+                  </main>
+                </SidebarProvider>
+              </DialogContent>
+            </Dialog>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>

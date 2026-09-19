@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
 
-## Getting Started
+<img src="../docs/images/icon.png" width="96" alt="">
 
-First, run the development server:
+</div>
+<h1 align="center" style="font-weight: bold;">o!cha</h1>
+<p align="center">o!cha is the next big application centered around osu! Chat, add friends, express your opinion and stay in touch with the community !</p>
+
+<p align="center">
+<a href="https://o-tcg.github.io/ocha/main">📱 Visit the Demo</a>
+</p>
+
+<h2 id="technologies">💻 Technologies</h2>
+
+- React
+- shadcn/ui
+- Next.js
+
+<h2 id="started">🚀 Getting started</h2>
+
+First, clone the project. Once you've gotten familiar with the project, run `npm run dev`, to get a development context up and running. The application is hosted at `/ocha/`.
+
+<h3>Prerequisites</h3>
+
+Here you list all prerequisites necessary for running your project. For example:
+
+- [NodeJS](https://nodejs.org/en)
+- [Git 2](https://git-scm.com/)
+
+<h3>Cloning</h3>
+
+To clone this project, simply run
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/o-tcg/ocha
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<h3>Starting</h3>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To start o!cha, simply run
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+cd ocha
+npm run dev
+```
 
-## Learn More
+<h2 id="colab">🤝 Collaborators</h2>
 
-To learn more about Next.js, take a look at the following resources:
+<p>Special thank you for all people that contributed for this project.</p>
+<table>
+<tr>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<td align="center">
+<a href="https://github.com/godkama">
+<img src="https://avatars.githubusercontent.com/u/82283685?v=4" width="100px;" alt="kama Profile Picture"/><br>
+<sub>
+<b>kama</b>
+</sub>
+</a>
+</td>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+<td align="center">
+<a href="https://github.com/virtualWinter">
+<img src="https://avatars.githubusercontent.com/u/79472940?v=4" width="100px;" alt="vWinter Profile Picture"/><br>
+<sub>
+<b>vWinter</b>
+</sub>
+</a>
+</td>
 
-## Deploy on Vercel
+</tr>
+</table>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<h2 id="contribute">📫 Contribute</h2>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+### How to Contribute
+
+1. **Clone the repository**
+2. **Create a feature branch**
+3. **Follow commit patterns**
+   Keep your commit messages clear, descriptive, and consistent with conventional commits (e.g., `feat(sidebar/settings): add font size slider`, `fix: save file crash`).
+4. **Open a Pull Request**
+
+- Push your branch to GitHub and open a Pull Request against the main branch.
+- Provide a clear description of the problem solved or feature implemented.
+- If your changes include visual modifications, attach relevant screenshots or GIFs.
+- Wait for review and address any feedback provided!
+
+<h3>Documentations that might help</h3>
+
+[📝 How to create a Pull Request](https://www.atlassian.com/br/git/tutorials/making-a-pull-request)
+
+[💾 Commit pattern](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716)
+
+[📃Docs](https://github.com/o-tcg/ocha/docs) - Not made yet

@@ -5,12 +5,16 @@ import {
   Bell,
   ChevronRight,
   ChevronsUp,
+  Headset,
   House,
   LogOut,
   MessageCircle,
   Search,
   Settings,
+  Settings2,
+  SquarePen,
   User,
+  UserRound,
   VerifiedIcon,
 } from "lucide-react";
 
@@ -60,6 +64,15 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import {
+  Field,
+  FieldLabel,
+  FieldContent,
+  FieldDescription,
+} from "@/components/ui/field";
+import { itemAxisPredicate } from "recharts/types/state/selectors/axisSelectors";
+import { ItemSeparator } from "./ui/item";
+import { Switch } from "./ui/switch";
 
 const generateFriends = (length: number) => {
   const sampleNames = [
@@ -82,12 +95,69 @@ const generateFriends = (length: number) => {
     email: `user${index + 1}@example.com`,
   }));
 };
+//temp settings, replace later
+const data = {
+  nav: [
+    {
+      name: "Profile",
+      icon: SquarePen,
+      content: (
+        <Field orientation="horizontal" className="max-w-sm">
+          <FieldContent>
+            <FieldLabel htmlFor="switch1">Show Display Name</FieldLabel>
+            <FieldDescription>
+              Show your display name to non-friends
+            </FieldDescription>
+          </FieldContent>
+          <Switch id="switch1" />
+        </Field>
+      ),
+    },
+    {
+      name: "Account",
+      icon: UserRound,
+      content: (
+        <Field orientation="horizontal" className="max-w-sm">
+          <FieldContent></FieldContent>
+        </Field>
+      ),
+    },
+    {
+      name: "Verify",
+      icon: VerifiedIcon,
+      content: (
+        <Field orientation="horizontal" className="max-w-sm">
+          <FieldContent></FieldContent>
+        </Field>
+      ),
+    },
+    {
+      name: "Your Data",
+      icon: Settings2,
+      content: (
+        <Field orientation="horizontal" className="max-w-sm">
+          <FieldContent></FieldContent>
+        </Field>
+      ),
+    },
+    {
+      name: "Support",
+      icon: Headset,
+      content: (
+        <Field orientation="horizontal" className="max-w-sm">
+          <FieldContent></FieldContent>
+        </Field>
+      ),
+    },
+  ],
+};
 
 export function AppSidebar() {
   const [showDialog, setShowDialog] = useState(false);
   const friends = generateFriends(50);
   const { open } = useSidebar();
-
+  const [activeSetting, setActiveSetting] = useState("Profile");
+  const activeNavItem = data.nav.find((item) => item.name === activeSetting);
   return (
     <Sidebar variant="floating" collapsible="icon">
       <SidebarHeader>
@@ -277,9 +347,16 @@ export function AppSidebar() {
                       <SidebarGroup>
                         <SidebarGroupContent>
                           <SidebarMenu>
-                            <SidebarMenuItem>
-                              <SidebarMenuButton>Profile</SidebarMenuButton>
-                            </SidebarMenuItem>
+                            {data.nav.map((item) => (
+                              <SidebarMenuItem key={item.name}>
+                                <SidebarMenuButton
+                                  isActive={item.name === activeSetting}
+                                  onClick={() => setActiveSetting(item.name)}
+                                >
+                                  {item.name}
+                                </SidebarMenuButton>
+                              </SidebarMenuItem>
+                            ))}
                           </SidebarMenu>
                         </SidebarGroupContent>
                       </SidebarGroup>
@@ -296,7 +373,7 @@ export function AppSidebar() {
                             </BreadcrumbItem>
                             <BreadcrumbSeparator className="hidden md:block" />
                             <BreadcrumbItem>
-                              <BreadcrumbPage>Profile</BreadcrumbPage>
+                              <BreadcrumbPage>{activeSetting}</BreadcrumbPage>
                             </BreadcrumbItem>
                           </BreadcrumbList>
                         </Breadcrumb>
@@ -305,6 +382,7 @@ export function AppSidebar() {
 
                     <div className="flex flex-1 flex-col gap-4 overflow-y-auto p-4 pt-0">
                       {/* put any content over here, in a div? */}
+                      {activeNavItem?.content}
                     </div>
                   </main>
                 </SidebarProvider>
